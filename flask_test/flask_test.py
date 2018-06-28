@@ -23,4 +23,4 @@ def hello_world():
 # when instantiated directly from the Python interpreter, not when 
 # imported from another file.
 if __name__ == '__main__':
-    app.run()
+    app.run(debug=True)
