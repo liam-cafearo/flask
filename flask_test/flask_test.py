@@ -18,9 +18,10 @@ app = Flask(__name__)
 def hello_world():
     return 'Hello World!'
 
-# We run our app using app.run(), unsurprisingly. 
-# We use if __name__ == ‘__main__’: to ensure the app is only run 
-# when instantiated directly from the Python interpreter, not when 
+
+# We run our app using app.run(), unsurprisingly.
+# We use if __name__ == ‘__main__’: to ensure the app is only run
+# when instantiated directly from the Python interpreter, not when
 # imported from another file.
 if __name__ == '__main__':
     app.run(debug=True)
