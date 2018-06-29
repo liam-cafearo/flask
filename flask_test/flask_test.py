@@ -1,4 +1,4 @@
-# We import the Flask class. We know that it’s a class because
+# We import the Flask class. We know that it's a class because
 # the convention in Python is to start classes with a capital letter.
 from flask import Flask
 
@@ -8,19 +8,22 @@ from flask import Flask
 app = Flask(__name__)
 
 # A route has been defined using a decorator.
-# The decorator is saying ‘if the user navigates to the address /,
-# then run the function below’, i.e. the decorated function.
+# The decorator is saying 'if the user navigates to the address /,
+# then run the function below', i.e. the decorated function.
 
 
 @app.route('/')
-# Our function returns the text ‘Hello World’ –
+# Our function returns the text 'Hello World' -
 # this is what the user will see in their browser.
 def hello_world():
-    return 'Hello World!'
+    # return 'Hello World!'
+    # Introduce an Error (produces ZeroDivision Error)
+    a, b = 1, 0
+    return a / b
 
 
 # We run our app using app.run(), unsurprisingly.
-# We use if __name__ == ‘__main__’: to ensure the app is only run
+# We use if __name__ == '__main__': to ensure the app is only run
 # when instantiated directly from the Python interpreter, not when
 # imported from another file.
 if __name__ == '__main__':
