@@ -1,11 +1,32 @@
 # We import the Flask class. We know that it's a class because
 # the convention in Python is to start classes with a capital letter.
-from flask import Flask
+from flask import Flask, abort
 
 # We create an instance of our class and pass it the name of our
 # module. Our app instance needs to know the name so it can find
 # our templates and static folders and files.
 app = Flask(__name__)
+
+# add age dictionary (normally stored in a database)
+ages = {
+    'bob': '43',
+    'alice': '29'
+}
+
+# add route that displays information about a user
+
+# You can see we've used <user> as a placeholder in the url.
+# This means that the function user_profiles will receive this
+# part of the url as the user argument.
+
+
+@app.route('/users/<user>')
+def users(user):
+    age = ages.get(user)
+    if age:
+        return '%s is %s years old' % (user, age)
+    else:
+        abort(404)
 
 # A route has been defined using a decorator.
 # The decorator is saying 'if the user navigates to the address /,
@@ -16,10 +37,10 @@ app = Flask(__name__)
 # Our function returns the text 'Hello World' -
 # this is what the user will see in their browser.
 def hello_world():
-    # return 'Hello World!'
+    return 'Hello World!'
     # Introduce an Error (produces ZeroDivision Error)
-    a, b = 1, 0
-    return a / b
+    # a, b = 1, 0
+    # return a / b
 
 
 # We run our app using app.run(), unsurprisingly.
