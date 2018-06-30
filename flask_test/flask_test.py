@@ -20,7 +20,9 @@ ages = {
 # This means that the function user_profiles will receive this
 # part of the url as the user argument.
 
-
+# `user` and `age` are both local variables. 
+# `user` is the parameter passed to the `users` function 
+# (which is read off the URL), while `age` is set on line 28.
 @app.route('/users/<user>')
 def users(user):
     age = ages.get(user)
@@ -55,3 +57,4 @@ def hello_world():
 # imported from another file.
 if __name__ == '__main__':
     app.run(debug=True)
+
