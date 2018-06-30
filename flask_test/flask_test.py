@@ -1,6 +1,7 @@
 # We import the Flask class. We know that it's a class because
 # the convention in Python is to start classes with a capital letter.
 from flask import Flask, abort
+from flask import render_template
 
 # We create an instance of our class and pass it the name of our
 # module. Our app instance needs to know the name so it can find
@@ -23,10 +24,15 @@ ages = {
 @app.route('/users/<user>')
 def users(user):
     age = ages.get(user)
-    if age:
-        return '%s is %s years old' % (user, age)
-    else:
-        abort(404)
+    # Instead of returning a string, we call render_template with 
+    # the name of the template, and the variable we want to be 
+    # rendered.
+    return render_template('user.html', user=user, age=age)
+
+    # if age:
+    #     return '%s is %s years old' % (user, age)
+    # else:
+    #     abort(404)
 
 # A route has been defined using a decorator.
 # The decorator is saying 'if the user navigates to the address /,
